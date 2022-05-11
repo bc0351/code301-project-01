@@ -9,5 +9,11 @@
   "window.autoDetectColorScheme": true,
   "window.closeWhenEmpty": true,
   "explorer.compactFolders": false,
-  "problems.showCurrentInStatus": true
+  "problems.showCurrentInStatus": true,
+  "search.exclude": {
+    "**/*.code-search": false,
+    "**/bower_components": false,
+    "**/node_modules": false
+  },
+  "search.useIgnoreFiles": false
 }
