@@ -11,9 +11,9 @@ Estimate of time needed to complete: 4 Hours
 
 Start time: 10:00 PM EST
 
-Finish time: 
+Finish time: 02:00 AM EST
 
-Actual time needed to complete: 
+Actual time needed to complete: 3 Hours
 
 ## Features List
 
