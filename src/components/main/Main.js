@@ -1,30 +1,22 @@
-import React from 'react';
-import './style.css';
-
+import React, { Component } from 'react';
 import HornedBeast from './HornedBeast';
-import dataJson from '../../data/data.json';
+import '../../style.css';
 
-export default class Main extends React.Component {
+export default class Main extends Component {
   render() {
-    let data = dataJson;
-    let ce = React.createElement;
-    console.log(data);
-    return (
-      <article>
-        {data.map((e) =>
-          ce(
-            HornedBeast,
-            {
-              key: e._id,
-              title: e.title,
-              imageUrl: e.image_url,
-              description: e.description,
-              keyword: e.keyword,
-            },
-            null
-          )
-        )}
-      </article>
-    );
+    let beasts = this.props.data.map((e, i) => {
+      return (
+        <HornedBeast
+          key={i}
+          sourceKey={e._id}
+          title={e.title}
+          imageUrl={e.image_url}
+          description={e.description}
+          keyword={e.keyword}
+          horns={e.horns}
+        />
+      );
+    });
+    return <main>{beasts}</main>;
   }
 }
