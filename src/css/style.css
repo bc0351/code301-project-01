@@ -84,3 +84,11 @@ div.card-favorite>.btn {
   line-height: 100%;
   align-content: center;
 }
+
+.modal-body, .modal-title {
+  font-size: large;
+}
+
+.modal-image {
+  width: 100%;
+}
