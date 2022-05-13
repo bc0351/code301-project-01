@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import Modal from 'react-bootstrap/Modal';
+
 import SelectedBeast from './components/main/SelectedBeast';
 import data from './data/data.json';
 
@@ -12,21 +12,35 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {data}
+      showModal: false,
+      beast: {},
     };
   }
 
-  findBeast = (key) => {this.state.data.filter(e=> {e._id === key;});};
+  handleShow = (beast) => {
+    this.setState({
+      showModal: true,
+      beast: beast,
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      showModal: false,
+    });
+  };
 
   render() {
-    // console.log(this.findBeast(1));
     return (
       <>
         <Header />
-        <Main data={data} />
+        <Main data={data} handleShow={this.handleShow} />
         <Footer />
-        <SelectedBeast 
-          // modalSrc={this.findBeast(
+        <SelectedBeast
+          show={this.state.showModal}
+          onHide={this.handleClose}
+          handleShow={this.handleShow}
+          beast={this.state.beast}
         />
       </>
     );

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Card, Button } from 'react-bootstrap';
 
 import 'bootstrap';
-import '../../style.css';
+import '../../css/style.css';
 
 export default class HornedBeast extends Component {
   constructor(props) {
@@ -16,30 +16,28 @@ export default class HornedBeast extends Component {
     this.setState({
       clicks: this.state.clicks + 1,
     });
-    console.log(this.state.clicks);
   };
 
-  // selectBeast = () => {
-  //   this.state={
-  //     key: {}
-  //   }
-  // }
+  handleImageClick = () => {
+    this.props.beast.handleShow(this.props.beast);
+  };
 
   render() {
+    // console.log(this.props);
     return (
       <Card>
         <Card.Body>
-          <Card.Title>{this.props.title}</Card.Title>
-          <Card.Subtitle>{`#${this.props.keyword}`}</Card.Subtitle>
-          <Card.Img 
+          <Card.Title>{this.props.beast.title}</Card.Title>
+          <Card.Subtitle>{`${this.props.beast.keyword}`}</Card.Subtitle>
+          <Card.Img
             variant="top"
-            src={this.props.imageUrl}
-            title={this.props.title}
-            alt={this.props.sourceKey}
+            src={this.props.beast.imageUrl}
+            title={this.props.beast.title}
+            alt={this.props.beast.sourceKey}
             className="card-image img-fluid hover-shadow"
-            onClick={this.selectBeast}
+            onClick={this.handleImageClick}
           />
-          <Card.Text>{this.props.description}</Card.Text>
+          <Card.Text>{this.props.beast.description}</Card.Text>
         </Card.Body>
         <div className="card-favorite">
           <Button variant="primary" onClick={this.faveBeast}>

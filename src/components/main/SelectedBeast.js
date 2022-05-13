@@ -5,34 +5,22 @@ export default class SelectedBeast extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showModal: false,
-      modalSrc: '',
-      caption: '',
+      beast: this.props.beast,
     };
   }
-
-  handleShow = (modalSrc, caption) => {
-    this.setState({
-      showModal: true,
-      modalSrc: modalSrc,
-      caption: caption,
-    });
-  };
-
-  handleClose = () => {
-    this.setState({
-      showModal: false,
-    });
-  };
-
   render() {
     return (
-      <div handleShow={this.handleShow}>
-        <Modal show={this.state.showModal} onHide={this.handleClose}>
-          <Modal.Header closeButton />
-          <Modal.Img src={this.state.modalSrc} caption={this.state.caption} />
+      <>
+        <Modal show={this.props.show} onHide={this.props.onHide}>
+          <Modal.Header>
+            <Modal.Title>{this.props.beast.title}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <img className="modal-image" src={this.props.beast.imageUrl} alt={this.props.beast.title} />
+          </Modal.Body>
+          <Modal.Title>{this.props.beast.description}</Modal.Title>
         </Modal>
-      </div>
+      </>
     );
   }
 }
