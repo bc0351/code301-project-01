@@ -1,12 +1,12 @@
 header,
 footer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   background-color: #202020;
   height: 10vh;
   align-content: center;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 header>*,
@@ -16,6 +16,15 @@ footer>* {
   color: white;
   font-size: 14pt;
   margin: 1em;
+}
+
+.search-bar-input {
+  color:#202020;
+  font-size: 14pt;
+  align-self: center;
+  width: 50%;
+  height: 30px;
+  color: #202020;
 }
 
 main {
@@ -91,4 +100,8 @@ div.card-favorite>.btn {
 
 .modal-image {
   width: 100%;
+}
+
+.suggestions, .suggestions>* {
+  font-size: 12pt;
 }
