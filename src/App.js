@@ -24,6 +24,9 @@ export default class App extends Component {
       }),
       showModal: false,
       beast: {},
+      testObject: {
+        testProp: 'test'
+      }
     };
   }
 
