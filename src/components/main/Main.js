@@ -3,19 +3,11 @@ import HornedBeast from './HornedBeast';
 import '../../css/style.css';
 
 export default class Main extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
-    let beasts = this.props.data.map((e, i) => {
-      let props = {
-        key: e._id,
-        title: e.title,
-        imageUrl: e.image_url,
-        description: e.description,
-        keyword: e.keyword,
-        horns: e.horns,
-        handleShow: this.props.handleShow,
-      };
-      return <HornedBeast key={i} beast={props} />;
-    });
+    let beasts = this.props.data.map((e) => {return ((e.beast.display)?<HornedBeast key={e.key} methods={this.props.methods} beast={e.beast} />:'');});
     return <main>{beasts}</main>;
   }
 }

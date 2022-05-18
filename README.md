@@ -108,3 +108,7 @@ Actual time needed to complete: 3 Hours
     Bring in the react-bootstrap library and use it to style your application making sure that it is responsive.
 
 - Stretch Goal: Add Interaction
+
+## WWRC
+
+![wwrc](./src/assets/img/wwrc.png)

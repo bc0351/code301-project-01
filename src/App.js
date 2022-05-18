@@ -2,20 +2,46 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import SelectedBeast from './components/main/SelectedBeast';
-import data from './data/data.json';
+import importedData from './data/data.json';
 
 import Header from './components/header/Header';
 import Main from './components/main/Main';
 import Footer from './components/footer/Footer';
+import SearchBar from './components/header/SearchBar';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      data: importedData.map((datum, index) => {
+        return {
+          key: index,
+          beast: {
+            ...datum,
+            display: true
+          },
+        };
+      }),
       showModal: false,
       beast: {},
+      testObject: {
+        testProp: 'test'
+      }
     };
   }
+
+  handleFilter = (filterIndexArr) => {
+    console.log(filterIndexArr);
+    let filteredData = this.state.data;
+    this.setState({
+      data: filteredData.map((datum) => {
+        !filterIndexArr.includes(datum.key)
+          ? (datum.beast.display = false)
+          : (datum.beast.display = true);
+      }),
+    });
+    console.log(`app.handlefilter: ${this.state.data}`);
+  };
 
   handleShow = (beast) => {
     this.setState({
@@ -31,16 +57,17 @@ export default class App extends Component {
   };
 
   render() {
+    let data = this.state.data;
+    let methods = {handleFilter: this.handleFilter, show: this.state.showModal, onHide: this.handleClose, handleShow: this.handleShow, handleClose: this.handleClose};
     return (
       <>
-        <Header />
-        <Main data={data} handleShow={this.handleShow} />
+        <Header data={data} methods={methods}>
+          <SearchBar data={data} methods={methods}/>
+        </Header>
+        <Main data={data} methods={methods}/>
         <Footer />
         <SelectedBeast
-          show={this.state.showModal}
-          onHide={this.handleClose}
-          handleShow={this.handleShow}
-          beast={this.state.beast}
+          data={data} methods={methods} beast={this.state.beast}
         />
       </>
     );
